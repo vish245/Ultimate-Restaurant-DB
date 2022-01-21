@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Order Form
+        
+
+    body(onload="init()")
+        a(href="/home") Home
+        a(href="/users") Users
+        if !login
+            a(href="/register") Register
+            a(href="/login") Login
+        
+        else
+            a(href="/users/" + userID)  UserInfo
+            a(href="/logout")    Logout
+        br
+        br
+        select(id="restaurant-select") 
+        br
+        div(id="info")
+        div(id="main")
+            div(class="column left" id="left" style={float:'left', width:'10%'})
+            div(class="column middle" id="middle" style={float:'left', width:'65%'})
+            div(class="column right" id="right" style={float:'left', width:'25%'})
+        
+        script(src="orderform.js") 
+	

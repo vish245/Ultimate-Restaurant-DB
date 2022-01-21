@@ -1,0 +1,36 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title User Profile
+    body 
+        a(href="/home") Home
+        a(href="/users") Users
+        if !login
+            a(href="/register") Register
+            a(href="/login") Login
+        
+        else
+            a(href="/orders") OrderForm 
+            a(href="/logout")    Logout
+
+        h2 Profile for #{username}
+        if isLoggedInUser
+            form(action="/users/"+currentUser , method="post") 
+                p Private Mode
+                input(type="radio", name="status" value="ON")
+                | ON
+                br
+                input(type="radio", name="status" value="OFF" )
+                | OFF
+                br
+                button(type="submit") Save
+        
+        p Order History
+        each order in orders
+            a(href="/orders/" + order._id) #{order._id}
+            br
+
+
